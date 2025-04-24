@@ -1,8 +1,14 @@
 <?php
 
-class HomeController
+class HomeController extends RenderView
 {
     public function index(){
-        echo "home controller";
+
+        $users = new UserModel();
+
+        $this->loadView('home',[
+            'title' => 'Home Page',
+            'users'  => $users->fetch()
+        ]);
     }
 }

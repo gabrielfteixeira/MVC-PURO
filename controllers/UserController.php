@@ -1,11 +1,17 @@
 <?php
 
-class UserController{
+class UserController extends RenderView
+{
     public function index(){
 
     }
 
     public function show($id){
-        echo "User ID = ". $id[0];
+        $id_user = $id[0];
+
+        $user = new UserModel();
+
+        $this->loadView('users', ['user' => $user->fetchById($id_user)]);
+
     }
 }
